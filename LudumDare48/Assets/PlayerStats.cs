@@ -56,14 +56,14 @@ public class PlayerStats : MonoBehaviour
         return modifiedDigUpForce;
     }
 
-    private float AddModifiers(float toModifie, List<float> listToLoop)
+    private float AddModifiers(float toModify, List<float> listToLoop)
     {
         foreach (float mod in listToLoop)
         {
-            toModifie += mod;
+            toModify += mod;
         }
 
-        return toModifie;
+        return toModify;
     }
 
     public string DigUpForceReadable()

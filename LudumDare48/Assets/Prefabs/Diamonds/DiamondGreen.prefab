@@ -7,6 +7,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1329433033899852815, guid: 541da9468873702489f8da1264fa445e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329433033899852815, guid: 541da9468873702489f8da1264fa445e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.08276451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329433033899852815, guid: 541da9468873702489f8da1264fa445e,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.19771275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329433033899852815, guid: 541da9468873702489f8da1264fa445e,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.4811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329433033899852815, guid: 541da9468873702489f8da1264fa445e,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.043120317
+      objectReference: {fileID: 0}
     - target: {fileID: 8451147979218943826, guid: 541da9468873702489f8da1264fa445e,
         type: 3}
       propertyPath: m_Sprite

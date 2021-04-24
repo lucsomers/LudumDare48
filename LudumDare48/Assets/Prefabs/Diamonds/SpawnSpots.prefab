@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4022861d66323914583feff85f52e9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomb: {fileID: 3482687589652065393, guid: 897263eb1bbfba543a28f02c36097df5, type: 3}
   blueCrystal: {fileID: 8451147980311240527, guid: 541da9468873702489f8da1264fa445e,
     type: 3}
   greenCrystal: {fileID: 3531645989355581875, guid: 4076ddf729a6b174a9aba0be3b3185c0,
@@ -570,6 +571,7 @@ MonoBehaviour:
   amountOfBlueCrystals: 5
   amountOfGreenCrystals: 5
   amountOfRedCrystals: 5
+  amountOfBombs: 0
 --- !u!1 &7780144330502125661
 GameObject:
   m_ObjectHideFlags: 0

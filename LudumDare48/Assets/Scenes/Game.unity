@@ -740,6 +740,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}
+      propertyPath: amountOfBombs
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
       propertyPath: amountOfBlueCrystals
       value: 10
       objectReference: {fileID: 0}
@@ -2130,6 +2135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
+      propertyPath: amountOfBombs
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}
@@ -8456,6 +8466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}
+      propertyPath: amountOfBombs
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
       propertyPath: amountOfRedCrystals
       value: 8
       objectReference: {fileID: 0}
@@ -8648,7 +8663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999
+  m_text: 10,551
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -8675,14 +8690,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -14344,6 +14359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}
+      propertyPath: amountOfBombs
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
       propertyPath: amountOfRedCrystals
       value: 3
       objectReference: {fileID: 0}
@@ -14568,6 +14588,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1956415366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5584986630361890665, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429220391711884563, guid: 54f56e46b84494f40b3a0ae9096d9deb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54f56e46b84494f40b3a0ae9096d9deb, type: 3}
 --- !u!1001 &1964257047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14674,6 +14763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
+      propertyPath: amountOfBombs
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}
@@ -15132,6 +15226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
+        type: 3}
+      propertyPath: amountOfBombs
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7780144330464207906, guid: 1db9fe29fea3a1c40b6fecd80f7e0697,
         type: 3}

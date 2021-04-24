@@ -6,6 +6,9 @@ public class LayerSpawner : MonoBehaviour
 {
     private const int MaxAmountOfTries = 10;
 
+    [Header("BadStuff")]
+    [SerializeField] private GameObject bomb;
+
     [Header("Diamond prefabs")]
     [SerializeField] private GameObject blueCrystal;
     [SerializeField] private GameObject greenCrystal;
@@ -15,10 +18,12 @@ public class LayerSpawner : MonoBehaviour
     [SerializeField] private int amountOfBlueCrystals;
     [SerializeField] private int amountOfGreenCrystals;
     [SerializeField] private int amountOfRedCrystals;
+    [SerializeField] private int amountOfBombs;
 
     private int currentAmountOfBlueCrystals = 0;
     private int currentAmountOfGreenCrystals = 0;
     private int currentAmountOfRedCrystals = 0;
+    private int currentAmountOfBombs = 0;
 
     private List<SpawnSpot> spawnSpotsInLayer = new List<SpawnSpot>();
 
@@ -37,8 +42,13 @@ public class LayerSpawner : MonoBehaviour
         while (currentAmountOfSpawnedCrystals < totalAmountOfCrystals)
         {
             GameObject toSpawn = null;
-
-            if (currentAmountOfBlueCrystals < amountOfBlueCrystals)
+         
+            if (currentAmountOfBombs < amountOfBombs)
+            {
+                toSpawn = Instantiate(bomb);
+                currentAmountOfBombs++;
+            }
+            else if (currentAmountOfBlueCrystals < amountOfBlueCrystals)
             {
                 toSpawn = Instantiate(blueCrystal);
                 currentAmountOfBlueCrystals++;

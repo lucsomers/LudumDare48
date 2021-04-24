@@ -6,6 +6,8 @@ public class PickupAble : MonoBehaviour
 {
     [SerializeField] private bool destroyOnCollision;
 
+    [SerializeField] private GameObject particles;
+
     private const float timeBeforeDestroy = 0.1f;
 
     public virtual void HandlePickup(PlayerInventory playerInventory)
@@ -22,7 +24,16 @@ public class PickupAble : MonoBehaviour
             HandlePickup(playerInventory);
         }
 
+        CreateParticles();
+
         StartCoroutine(DestroySelf());
+    }
+
+    private void CreateParticles()
+    {
+        GameObject go = Instantiate(particles);
+        go.transform.position = transform.position;
+        go.SetActive(true);
     }
 
     IEnumerator DestroySelf()
