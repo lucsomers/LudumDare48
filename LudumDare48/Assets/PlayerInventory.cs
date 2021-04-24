@@ -5,16 +5,44 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private int currentAmountOfMoney = 0;
-    
-    public void GiveMoney(int coinValue)
+    #region SingleTon
+
+    public static PlayerInventory instance;
+
+    private void Awake()
     {
-        if (coinValue > 0)
+        if (instance == null || instance != this)
         {
-            currentAmountOfMoney += coinValue;
-            Debug.Log("Current amount of money = " + currentAmountOfMoney);
+            instance = this;
         }
     }
 
-    public int CurrentAmountOfMoney { get => currentAmountOfMoney; set => currentAmountOfMoney = value; }
+    #endregion
+
+    private int currentAmountOfDiamonds = 0;
+
+    private void Start()
+    {
+            PlayerUIManager.instance.UpdateDiamondText(currentAmountOfDiamonds.ToString());
+    }
+
+    public bool PayMoney(int coinValue)
+    {
+        if (coinValue <= currentAmountOfDiamonds)
+        {
+            currentAmountOfDiamonds -= coinValue;
+            PlayerUIManager.instance.UpdateDiamondText(currentAmountOfDiamonds.ToString());
+            return true;
+        }
+
+        return false;
+    }
+
+    public void GiveMoney(int coinValue)
+    {
+            currentAmountOfDiamonds += coinValue;
+            PlayerUIManager.instance.UpdateDiamondText(currentAmountOfDiamonds.ToString());
+    }
+
+    public int CurrentAmountOfMoney { get => currentAmountOfDiamonds; set => currentAmountOfDiamonds = value; }
 }

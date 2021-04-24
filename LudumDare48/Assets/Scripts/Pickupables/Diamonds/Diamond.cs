@@ -8,8 +8,6 @@ public class Diamond : PickupAble
 
     public override void HandlePickup(PlayerInventory playerInventory)
     {
-        base.HandlePickup(playerInventory);
-
         playerInventory.GiveMoney(diamondValue);
     }
 }

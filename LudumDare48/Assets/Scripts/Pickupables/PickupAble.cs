@@ -6,6 +6,8 @@ public class PickupAble : MonoBehaviour
 {
     [SerializeField] private bool destroyOnCollision;
 
+    private const float timeBeforeDestroy = 0.1f;
+
     public virtual void HandlePickup(PlayerInventory playerInventory)
     {
 
@@ -20,6 +22,12 @@ public class PickupAble : MonoBehaviour
             HandlePickup(playerInventory);
         }
 
+        StartCoroutine(DestroySelf());
+    }
+
+    IEnumerator DestroySelf()
+    {
+        yield return new WaitForSeconds(timeBeforeDestroy);
         if (destroyOnCollision)
         {
             this.gameObject.SetActive(false);

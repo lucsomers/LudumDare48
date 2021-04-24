@@ -22,6 +22,12 @@ public class PlayerHealth : MonoBehaviour
 
     private int currentHealth = 0;
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        PlayerUIManager.instance.UpdateHealth(currentHealth);
+    }
+
     public void HealPlayer(int amount)
     {
         currentHealth += amount;
@@ -48,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateGraphic()
     {
-
+        PlayerUIManager.instance.UpdateHealth(currentHealth);
     }
 
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }

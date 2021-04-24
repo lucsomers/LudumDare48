@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class BottomLineMover : MonoBehaviour
 {
-    [SerializeField] private float lineSpeed;
+    #region SingleTon
+
+    public static BottomLineMover instance;
+
+    private void Awake()
+    {
+        if (instance == null || instance != this)
+        {
+            instance = this;
+        }
+    }
+
+    #endregion
+
     [SerializeField] private float stepSize;
+    [SerializeField] private float moveDownSpeed;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private float currentMoveDownSpeed;
+
+    private void Start()
     {
-        if(collision.collider.CompareTag("Player"))
-        {
-            transform.position -= new Vector3(0, stepSize * Time.deltaTime, 0);
-        }
+        currentMoveDownSpeed = moveDownSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void MoveLineDown()
     {
-        if (collision.CompareTag("Player"))
-        {
-            transform.position -= new Vector3(0, stepSize * Time.deltaTime, 0);
-        }
+        transform.position -= new Vector3(0, stepSize, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.position -= new Vector3(0, lineSpeed * Time.deltaTime, 0);
+        transform.position -= new Vector3(0, currentMoveDownSpeed * Time.deltaTime, 0);
     }
 }

@@ -12,7 +12,6 @@ public class PlayerGroundCheck : MonoBehaviour
         if (collision.transform.CompareTag("Ground"))
         {
             isGrounded = true;
-            Debug.Log(isGrounded);
         }
 
         if (collision.transform.CompareTag("BottomLine"))
@@ -26,7 +25,6 @@ public class PlayerGroundCheck : MonoBehaviour
         if (collision.transform.CompareTag("Ground"))
         {
             isGrounded = false;
-            Debug.Log(isGrounded);
         }
 
         if (collision.transform.CompareTag("BottomLine"))
