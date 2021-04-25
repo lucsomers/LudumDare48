@@ -10,10 +10,10 @@ public class ScreenManager : MonoBehaviour
     {
         if(instance == null || instance != this)
         {
+            Destroy(instance);
             instance = this;
+            DontDestroyOnLoad(this);
         }
-
-        DontDestroyOnLoad(this);
     }
     #endregion
 
@@ -28,6 +28,7 @@ public class ScreenManager : MonoBehaviour
 
     public void GoToGame()
     {
+        AudioManager.instance.PlaySound(AudioType.MENU, false);
         SceneManager.LoadScene(GameIndex);
     }
 

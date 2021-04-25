@@ -7,6 +7,7 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] protected int upgradeCost;
     [SerializeField] protected TMP_Text textbox;
+    [SerializeField] protected ParticleSystem buyParticles;
 
     protected bool canBuy = false;
 

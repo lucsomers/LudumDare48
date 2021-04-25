@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         groundCheck = GetComponentInChildren<PlayerGroundCheck>();
         PlayerUIManager.instance.UpdateJumpPowerText(PlayerStats.instance.DigUpForceReadable());
+        AudioManager.instance.PlaySound(AudioType.GAME, true);
     }
 
     private void FixedUpdate()
@@ -99,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
         ParticleManager.instance.SetDownwardParticleSystem(false);
         ParticleManager.instance.SetDiggingTrail(false);
 
+        AudioManager.instance.PlaySound(AudioType.DRILL, false);
+
         amountOfBottomLineHits--;
     }
 
@@ -162,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleGoingUnderGround()
     {
+        AudioManager.instance.PlaySound(AudioType.DRILL, true);
         isDigging = true;
         circleCollider.enabled = false;
         ParticleManager.instance.SetUpwardParticleSystem(false);

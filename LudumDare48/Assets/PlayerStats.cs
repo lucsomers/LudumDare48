@@ -40,6 +40,11 @@ public class PlayerStats : MonoBehaviour
 
     private int diamondTotal = 0;
 
+    public void ResetStats()
+    {
+        Destroy(gameObject);
+    }
+
     private float GetSpeed()
     {
         float modifiedSpeed = speed;

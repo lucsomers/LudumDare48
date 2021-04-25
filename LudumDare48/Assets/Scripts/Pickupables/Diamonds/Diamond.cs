@@ -10,5 +10,6 @@ public class Diamond : PickupAble
     {
         playerInventory.GiveMoney(diamondValue);
         PlayerStats.instance.UpDiamondsTotal(diamondValue);
+        AudioManager.instance.PlaySound(AudioType.CRYSTAL_SMASH, true);
     }
 }

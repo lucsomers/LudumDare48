@@ -15,6 +15,8 @@ public class HealthShop : Shop
                 if (PlayerInventory.instance.PayMoney(upgradeCost))
                 {
                     PlayerHealth.instance.HealPlayer(healAmount);
+                    buyParticles.Play();
+                    AudioManager.instance.PlaySound(AudioType.BUY, true);
                 }
             }
         }

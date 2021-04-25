@@ -12,5 +12,7 @@ public class Bomb : PickupAble
         base.HandlePickup(playerInventory);
 
         PlayerHealth.instance.DamagePlayer(damageAmount);
+
+        AudioManager.instance.PlaySound(AudioType.EXPLOSION, true);
     }
 }

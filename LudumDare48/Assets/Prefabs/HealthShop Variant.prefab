@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeCost: 10
   textbox: {fileID: 186557824936976308}
+  buyParticles: {fileID: 8458101216557227406}
   healAmount: 1
 --- !u!1001 &5042987463642752234
 PrefabInstance:
@@ -134,3 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &8458101216557227406 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3503092833938438500, guid: 77ea871ba94af264c8b0181673c6268b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5042987463642752234}
+  m_PrefabAsset: {fileID: 0}

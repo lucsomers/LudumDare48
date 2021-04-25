@@ -34,6 +34,7 @@ public class EndDiamond : PickupAble
     {
         Time.timeScale = 0.2f;
         yield return new WaitForSecondsRealtime(1);
+        Time.timeScale = 1;
         ScreenManager.instance.EndGame();
     }
 }

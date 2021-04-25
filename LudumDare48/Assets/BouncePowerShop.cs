@@ -9,7 +9,6 @@ public class BouncePowerShop : Shop
 {
     [SerializeField] private float modifierToSell;
 
-
     private void Start()
     {
         textbox.SetText(upgradeCost.ToString() + " for " + "1");
@@ -25,6 +24,8 @@ public class BouncePowerShop : Shop
                 {
                     PlayerStats.instance.AddDigUpForceModifier(modifierToSell);
                     PlayerUIManager.instance.UpdateJumpPowerText(PlayerStats.instance.DigUpForceReadable());
+                    buyParticles.Play();
+                    AudioManager.instance.PlaySound(AudioType.BUY, true);
                 }
             }
         }
