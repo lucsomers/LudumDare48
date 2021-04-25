@@ -18,6 +18,12 @@ public class PlayerGroundCheck : MonoBehaviour
         {
             bottomLine = true;
         }
+
+        if (collision.transform.CompareTag("Rock"))
+        {
+            collision.GetComponent<RockManager>().HandleRockHit();
+            bottomLine = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -28,6 +34,11 @@ public class PlayerGroundCheck : MonoBehaviour
         }
 
         if (collision.transform.CompareTag("BottomLine"))
+        {
+            bottomLine = false;
+        }
+
+        if (collision.transform.CompareTag("Rock"))
         {
             bottomLine = false;
         }

@@ -9,5 +9,6 @@ public class Diamond : PickupAble
     public override void HandlePickup(PlayerInventory playerInventory)
     {
         playerInventory.GiveMoney(diamondValue);
+        PlayerStats.instance.UpDiamondsTotal(diamondValue);
     }
 }

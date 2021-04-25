@@ -50,6 +50,14 @@ public class PlayerHealth : MonoBehaviour
         }
 
         UpdateGraphic();
+
+        PlayerUIManager.instance.FlashRed();
+        ScreenShaker.instance.ShakeScreen();
+
+        if (currentHealth <= 0)
+        {
+            ScreenManager.instance.EndGame();
+        }
     }
 
     private void UpdateGraphic()

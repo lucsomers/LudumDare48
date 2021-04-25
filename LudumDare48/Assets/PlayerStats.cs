@@ -11,10 +11,18 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null || instance != this)
+        if (instance == null)
         {
             instance = this;
         }
+
+        if (instance != this)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this);
     }
 
     #endregion
@@ -29,6 +37,8 @@ public class PlayerStats : MonoBehaviour
     private List<float> speedModifiers = new List<float>();
     private List<float> maxSpeedModifiers = new List<float>();
     private List<float> digUpForceModifiers = new List<float>();
+
+    private int diamondTotal = 0;
 
     private float GetSpeed()
     {
@@ -70,6 +80,11 @@ public class PlayerStats : MonoBehaviour
     {
         return digUpForceModifiers.Count.ToString();
     }
+    
+    public void UpDiamondsTotal(int amount)
+    {
+        diamondTotal += amount;
+    }
 
     public void AddSpeedModifier(float value) { speedModifiers.Add(value); }
     public void AddMaxSpeedModifier(float value) { maxSpeedModifiers.Add(value); }
@@ -80,4 +95,5 @@ public class PlayerStats : MonoBehaviour
     public float DigUpForce { get => GetDigUpForce(); }
     public float MaxVerticalSpeed { get => maxVerticalSpeed; }
     public float MaxUnderGroundSpeed { get => maxUnderGroundSpeed; }
+    public int DiamondTotal { get => diamondTotal; }
 }

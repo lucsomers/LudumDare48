@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerGroundCheck groundCheck;
     private Collider2D circleCollider;
+
+    private int amountOfBottomLineHits = 0;
 
     private void Start()
     {
@@ -86,23 +89,35 @@ public class PlayerMovement : MonoBehaviour
     {
         circleCollider.enabled = true;
         isDigging = false;
-        PlayerHealth.instance.HealPlayer(1);
 
         ParticleManager.instance.SetUpwardParticleSystem(false);
         ParticleManager.instance.SetDownwardParticleSystem(false);
         ParticleManager.instance.SetDiggingTrail(false);
+
+        amountOfBottomLineHits--;
     }
 
     private void HandleBottomLineHit()
     {
+        CheckGameOver();
+
         BottomLineMover.instance.MoveLineDown();
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(new Vector2(0, PlayerStats.instance.DigUpForce), ForceMode2D.Impulse);
-        PlayerHealth.instance.DamagePlayer(1);
 
         ParticleManager.instance.SetUpwardParticleSystem(true);
         ParticleManager.instance.SetDownwardParticleSystem(false);
+
+        amountOfBottomLineHits++;
+    }
+
+    private void CheckGameOver()
+    {
+        if (amountOfBottomLineHits > 1)
+        {
+            ScreenManager.instance.EndGame();
+        }
     }
 
     private void HandleStep(MoveDirection directionToMoveIn)

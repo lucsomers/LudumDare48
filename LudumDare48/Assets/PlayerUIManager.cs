@@ -25,9 +25,18 @@ public class PlayerUIManager : MonoBehaviour
     [Header("Jump power")]
     [SerializeField] TMPro.TMP_Text jumpPowerTextBox;
 
+    [Header("Red flash")]
+    [SerializeField] private Image RedFlashForDamage;
+    [SerializeField] private float fadeOutStepSize;
     [Header("Hearths")]
     [SerializeField] private List<Image> damagedHearths = new List<Image>();
     [SerializeField] private List<Image> normalHearths = new List<Image>();
+
+    public void FlashRed()
+    {
+        RedFlashForDamage.gameObject.SetActive(true);
+        StartCoroutine(FadeRedOut());
+    }
 
     public void UpdateHealth(int currentHealth)
     {
@@ -54,5 +63,20 @@ public class PlayerUIManager : MonoBehaviour
     public void UpdateJumpPowerText(string currentJumpPowerValue)
     {
         jumpPowerTextBox.SetText(currentJumpPowerValue);
+    }
+
+    private IEnumerator FadeRedOut()
+    {
+        float startValue = RedFlashForDamage.color.a;
+
+        while (RedFlashForDamage.color.a > 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            RedFlashForDamage.color = new Color(RedFlashForDamage.color.r, RedFlashForDamage.color.g, RedFlashForDamage.color.b, 0);
+        }
+
+        RedFlashForDamage.color = new Color(RedFlashForDamage.color.r, RedFlashForDamage.color.g, RedFlashForDamage.color.b, startValue);
+        RedFlashForDamage.gameObject.SetActive(false);
     }
 }

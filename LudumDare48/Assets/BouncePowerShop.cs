@@ -9,6 +9,12 @@ public class BouncePowerShop : Shop
 {
     [SerializeField] private float modifierToSell;
 
+
+    private void Start()
+    {
+        textbox.SetText(upgradeCost.ToString() + " for " + "1");
+    }
+
     private void Update()
     {
         if (canBuy)

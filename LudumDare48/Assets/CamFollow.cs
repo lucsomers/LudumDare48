@@ -14,19 +14,22 @@ public class CamFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        float calculatedY = playerTransform.position.y + yOffset;
+        if (!ScreenShaker.instance.IsShaking)
+        {
+            float calculatedY = playerTransform.position.y + yOffset;
 
-        if (playerTransform.position.x <= minXPos)
-        {
-            transform.position = new Vector3(minXPos, calculatedY, transform.position.z);
-        }
-        else if (playerTransform.position.x >= maxXPos)
-        {
-            transform.position = new Vector3(maxXPos, calculatedY, transform.position.z);
-        }
-        else
-        {
-            transform.position = new Vector3(playerTransform.position.x, calculatedY, transform.position.z);
+            if (playerTransform.position.x <= minXPos)
+            {
+                transform.position = new Vector3(minXPos, calculatedY, transform.position.z);
+            }
+            else if (playerTransform.position.x >= maxXPos)
+            {
+                transform.position = new Vector3(maxXPos, calculatedY, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(playerTransform.position.x, calculatedY, transform.position.z);
+            }
         }
     }
 }

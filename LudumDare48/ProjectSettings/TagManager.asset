@@ -9,6 +9,7 @@ TagManager:
   - Diamond
   - BottomLine
   - PickupAble
+  - Rock
   layers:
   - Default
   - TransparentFX

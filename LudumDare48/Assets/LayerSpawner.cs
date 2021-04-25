@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LayerSpawner : MonoBehaviour
 {
-    private const int MaxAmountOfTries = 10;
+    private const int MaxAmountOfTries = 3;
 
     [Header("BadStuff")]
     [SerializeField] private GameObject bomb;
+    [SerializeField] private GameObject rock;
 
     [Header("Diamond prefabs")]
     [SerializeField] private GameObject blueCrystal;
@@ -19,11 +20,13 @@ public class LayerSpawner : MonoBehaviour
     [SerializeField] private int amountOfGreenCrystals;
     [SerializeField] private int amountOfRedCrystals;
     [SerializeField] private int amountOfBombs;
+    [SerializeField] private int amountOfRocks;
 
     private int currentAmountOfBlueCrystals = 0;
     private int currentAmountOfGreenCrystals = 0;
     private int currentAmountOfRedCrystals = 0;
     private int currentAmountOfBombs = 0;
+    private int currentAmountOfRocks = 0;
 
     private List<SpawnSpot> spawnSpotsInLayer = new List<SpawnSpot>();
 
@@ -37,7 +40,7 @@ public class LayerSpawner : MonoBehaviour
     private void SpawnCrystals()
     {
         int currentAmountOfSpawnedCrystals = 0;
-        int totalAmountOfCrystals = amountOfBlueCrystals + amountOfGreenCrystals + amountOfRedCrystals;
+        int totalAmountOfCrystals = amountOfBlueCrystals + amountOfGreenCrystals + amountOfRedCrystals + amountOfBombs + amountOfRocks;
 
         while (currentAmountOfSpawnedCrystals < totalAmountOfCrystals)
         {
@@ -47,6 +50,11 @@ public class LayerSpawner : MonoBehaviour
             {
                 toSpawn = Instantiate(bomb);
                 currentAmountOfBombs++;
+            }
+            else if (currentAmountOfRocks < amountOfRocks)
+            {
+                toSpawn = Instantiate(rock);
+                currentAmountOfRocks++;
             }
             else if (currentAmountOfBlueCrystals < amountOfBlueCrystals)
             {
@@ -77,6 +85,21 @@ public class LayerSpawner : MonoBehaviour
         for (int i = 0; i < MaxAmountOfTries; i++)
         {
             SpawnSpot spawnSpotToReturn = spawnSpotsInLayer[Random.Range(0, spawnSpotsInLayer.Count)];
+
+            if (!spawnSpotToReturn.HasObject)
+            {
+                return spawnSpotToReturn;
+            }
+        }
+
+        return GetNextAvailableSpawnSpot();
+    }
+
+    private SpawnSpot GetNextAvailableSpawnSpot()
+    {
+        for (int i = 0; i < MaxAmountOfTries; i++)
+        {
+            SpawnSpot spawnSpotToReturn = spawnSpotsInLayer[i];
 
             if (!spawnSpotToReturn.HasObject)
             {
