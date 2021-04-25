@@ -51,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (rb.velocity.x == 0)
+        {
+            PlayerAnimationManager.instance.Idle();
+        }
+
         CheckForMaxSpeeds();
     }
 
@@ -110,6 +115,8 @@ public class PlayerMovement : MonoBehaviour
         ParticleManager.instance.SetDownwardParticleSystem(false);
 
         amountOfBottomLineHits++;
+
+        PlayerAnimationManager.instance.Drill(true);
     }
 
     private void CheckGameOver()
@@ -127,15 +134,24 @@ public class PlayerMovement : MonoBehaviour
             case MoveDirection.DOWN:
                 if (groundCheck.IsGrounded && !isDigging)
                 {
+                    PlayerAnimationManager.instance.Drill(false);
                     HandleGoingUnderGround();
                 }
                 break;
 
             case MoveDirection.LEFT:
+                if (!isDigging)
+                {
+                    PlayerAnimationManager.instance.Move(false);
+                }
                 rb.AddForce(new Vector2(-PlayerStats.instance.Speed, 0));
                 break;
 
             case MoveDirection.RIGHT:
+                if (!isDigging)
+                {
+                    PlayerAnimationManager.instance.Move(true);
+                }
                 rb.AddForce(new Vector2(PlayerStats.instance.Speed, 0));
                 break;
 

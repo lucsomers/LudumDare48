@@ -29,7 +29,7 @@ public class PickupAble : MonoBehaviour
         StartCoroutine(DestroySelf());
     }
 
-    private void CreateParticles()
+    protected void CreateParticles()
     {
         GameObject go = Instantiate(particles);
         go.transform.position = transform.position;

@@ -10,6 +10,7 @@ TagManager:
   - BottomLine
   - PickupAble
   - Rock
+  - Goal
   layers:
   - Default
   - TransparentFX
