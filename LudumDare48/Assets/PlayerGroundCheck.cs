@@ -6,6 +6,8 @@ public class PlayerGroundCheck : MonoBehaviour
 {
     private bool isGrounded = true;
     private bool bottomLine = false;
+    private bool rockHit = false;
+    private bool wall = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +24,12 @@ public class PlayerGroundCheck : MonoBehaviour
         if (collision.transform.CompareTag("Rock"))
         {
             collision.GetComponent<RockManager>().HandleRockHit();
-            bottomLine = true;
+            rockHit = true;
+        }
+
+        if (collision.transform.CompareTag("Wall"))
+        {
+            wall = true;
         }
     }
 
@@ -33,6 +40,11 @@ public class PlayerGroundCheck : MonoBehaviour
             isGrounded = false;
         }
 
+        if (collision.transform.CompareTag("Wall"))
+        {
+            wall = false;
+        }
+
         if (collision.transform.CompareTag("BottomLine"))
         {
             bottomLine = false;
@@ -40,10 +52,12 @@ public class PlayerGroundCheck : MonoBehaviour
 
         if (collision.transform.CompareTag("Rock"))
         {
-            bottomLine = false;
+            rockHit = false;
         }
     }
 
     public bool IsGrounded { get => isGrounded; }
     public bool BottomLine { get => bottomLine; set => bottomLine = value; }
+    public bool RockHit { get => rockHit; }
+    public bool Wall { get => wall; }
 }

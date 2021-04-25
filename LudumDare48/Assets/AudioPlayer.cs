@@ -9,25 +9,28 @@ public class AudioPlayer : MonoBehaviour
 
     private AudioSource source;
     
-    private void Start()
+    private void Awake()
     {
         source = GetComponent<AudioSource>();
     }
 
     public void PlaySoundOnLoop()
     {
+        source = GetComponent<AudioSource>();
         source.loop = true;
         source.Play();
     }
 
     public void PlaySound()
     {
+        source = GetComponent<AudioSource>();
         source.loop = false;
         source.Play();
     }
 
     public void StopSound()
     {
+        source = GetComponent<AudioSource>();
         source.loop = false;
         source.Stop();
     }

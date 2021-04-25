@@ -39,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
             HandleStep(MoveDirection.RIGHT);
         }
 
-        if (groundCheck.BottomLine)
+        if (groundCheck.BottomLine || groundCheck.RockHit)
         {
-            HandleBottomLineHit();
+            HandleBottomLineHit(groundCheck.RockHit);
         }
 
         if (isDigging)
@@ -102,24 +102,33 @@ public class PlayerMovement : MonoBehaviour
 
         AudioManager.instance.PlaySound(AudioType.DRILL, false);
 
-        amountOfBottomLineHits--;
+        amountOfBottomLineHits = 0;
     }
 
-    private void HandleBottomLineHit()
+    private void HandleBottomLineHit(bool rockhit)
     {
         CheckGameOver();
+        
+        if (amountOfBottomLineHits == 0)
+        {
+            BottomLineMover.instance.MoveLineDown();
 
-        BottomLineMover.instance.MoveLineDown();
+            rb.velocity = new Vector2(rb.velocity.x, 0);
 
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(0, PlayerStats.instance.DigUpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, PlayerStats.instance.DigUpForce), ForceMode2D.Impulse);
+        }
 
         ParticleManager.instance.SetUpwardParticleSystem(true);
         ParticleManager.instance.SetDownwardParticleSystem(false);
 
-        amountOfBottomLineHits++;
+        if (!rockhit)
+        {
+            amountOfBottomLineHits++;
+        }
 
         PlayerAnimationManager.instance.Drill(true);
+
+
     }
 
     private void CheckGameOver()
@@ -147,7 +156,16 @@ public class PlayerMovement : MonoBehaviour
                 {
                     PlayerAnimationManager.instance.Move(false);
                 }
-                rb.AddForce(new Vector2(-PlayerStats.instance.Speed, 0));
+
+                if (!groundCheck.Wall)
+                {
+                    rb.AddForce(new Vector2(-PlayerStats.instance.Speed, 0));
+                }
+                else
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                    rb.AddForce(new Vector2(PlayerStats.instance.Speed, 0));
+                }
                 break;
 
             case MoveDirection.RIGHT:
@@ -155,7 +173,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     PlayerAnimationManager.instance.Move(true);
                 }
+
                 rb.AddForce(new Vector2(PlayerStats.instance.Speed, 0));
+                
+                if (groundCheck.Wall)
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                    rb.AddForce(new Vector2(-PlayerStats.instance.Speed, 0));
+                }
                 break;
 
             default:

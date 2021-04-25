@@ -11,6 +11,7 @@ TagManager:
   - PickupAble
   - Rock
   - Goal
+  - Wall
   layers:
   - Default
   - TransparentFX
